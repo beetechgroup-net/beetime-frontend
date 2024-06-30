@@ -5,9 +5,6 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import {StyledTableCell} from "@/components/my-tasks/StyledTableCell";
 import Checkbox from "@mui/material/Checkbox";
-import TableSortLabel from "@mui/material/TableSortLabel";
-import Box from "@mui/material/Box";
-import {visuallyHidden} from "@mui/utils";
 import {HeadCell} from "@/interfaces/component/HeadCell";
 
 export function EnhancedTableHead(props: {
@@ -18,20 +15,20 @@ export function EnhancedTableHead(props: {
   rowCount: number;
   onRequestSort: (event: React.MouseEvent<unknown>, property: keyof Task) => void;
 }) {
-  const { onSelectAllClick, order, orderBy, numSelected, rowCount, onRequestSort } = props;
+  const {onSelectAllClick, order, orderBy, numSelected, rowCount, onRequestSort} = props;
   const createSortHandler = (property: keyof Task) => (event: React.MouseEvent<unknown>) => {
     onRequestSort(event, property);
   };
 // Define a comparator for sorting
   const headCells: readonly HeadCell[] = [
-    { id: 'id', numeric: true, label: 'ID' },
-    { id: 'startTime', numeric: false, label: 'Start Time' },
-    { id: 'finishTime', numeric: false, label: 'Finish Time' },
-    { id: 'duration', numeric: true, label: 'Duration' },
-    { id: 'description', numeric: false, label: 'Description' },
-    { id: 'category', numeric: false, label: 'Category' },
-    { id: 'status', numeric: false, label: 'Status' },
-    { id: 'link', numeric: false, label: 'Link' },
+    {id: 'id', numeric: true, label: 'ID'},
+    {id: 'startTime', numeric: false, label: 'Start Time'},
+    {id: 'finishTime', numeric: false, label: 'Finish Time'},
+    {id: 'duration', numeric: true, label: 'Duration'},
+    {id: 'description', numeric: false, label: 'Description'},
+    {id: 'category', numeric: false, label: 'Category'},
+    {id: 'status', numeric: false, label: 'Status'},
+    {id: 'link', numeric: false, label: 'Link'},
   ];
   return (
       <TableHead>
@@ -42,7 +39,7 @@ export function EnhancedTableHead(props: {
                 indeterminate={numSelected > 0 && numSelected < rowCount}
                 checked={rowCount > 0 && numSelected === rowCount}
                 onChange={onSelectAllClick}
-                inputProps={{ 'aria-label': 'select all desserts' }}
+                inputProps={{'aria-label': 'select all desserts'}}
             />
           </StyledTableCell>
           {headCells.map((headCell) => (
@@ -50,20 +47,8 @@ export function EnhancedTableHead(props: {
                   key={headCell.id}
                   align={'left'}
                   padding="normal"
-                  sortDirection={orderBy === headCell.id ? order : false}
               >
-                <TableSortLabel
-                    active={orderBy === headCell.id}
-                    direction={orderBy === headCell.id ? order : 'asc'}
-                    onClick={createSortHandler(headCell.id)}
-                >
-                  {headCell.label}
-                  {orderBy === headCell.id ? (
-                      <Box component="span" sx={visuallyHidden}>
-                        {order === 'desc' ? 'sorted descending' : 'sorted ascending'}
-                      </Box>
-                  ) : null}
-                </TableSortLabel>
+                {headCell.label}
               </StyledTableCell>
           ))}
         </TableRow>
