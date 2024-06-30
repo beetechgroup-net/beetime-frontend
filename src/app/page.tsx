@@ -1,62 +1,69 @@
+"use client"
 import * as React from 'react';
+import Box from '@mui/material/Box';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
+import TablePagination from '@mui/material/TablePagination';
 import Paper from '@mui/material/Paper';
+import {Order} from "@/interfaces/component/Order";
+import {Task} from "@/interfaces/entity/Task";
+import {useFetchMyTasks} from "@/hooks/useFetchMyTasks";
+import {EnhancedTableHead} from "@/components/my-tasks/EnhancedTableHead";
+import {Row} from "@/components/my-tasks/Row";
 
-function createData(
-    initialDate: string,
-    finishDate: string,
-    duration: number,
-    description: string,
-) {
-  return {
-    initialDate,
-    finishDate,
-    duration,
-    description
+export default function EnhancedTable() {
+  const [orderBy, setOrderBy] = React.useState<keyof Task>('id');
+  const [selected, setSelected] = React.useState<readonly number[]>([]);
+  const [page, setPage] = React.useState(0);
+  const [rowsPerPage, setRowsPerPage] = React.useState(5);
+  const rows = useFetchMyTasks()
+  const handleChangePage = (event: unknown, newPage: number) => {
+    setPage(newPage);
   };
-}
 
-const rows = [
-  createData('20/06/2024 07:35', '20/06/2024 08:35', 1, "Task #656 Criando o arquivo XXX"),
-  createData('20/06/2024 07:35', '20/06/2024 08:35', 1, "Task #656 Criando o arquivo XXX"),
-  createData('20/06/2024 07:35', '20/06/2024 08:35', 1, "Task #656 Criando o arquivo XXX"),
-  createData('20/06/2024 07:35', '20/06/2024 08:35', 1, "Task #656 Criando o arquivo XXX"),
-];
+  const handleChangeRowsPerPage = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setRowsPerPage(parseInt(event.target.value, 10));
+    setPage(0);
+  };
+  const emptyRows =
+      page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
 
-export default function BasicTable() {
   return (
-      <TableContainer component={Paper}>
-        <Table sx={{minWidth: 650}} aria-label="simple table">
-          <TableHead>
-            <TableRow>
-              <TableCell>Start Time</TableCell>
-              <TableCell>Finish Time</TableCell>
-              <TableCell>Duration</TableCell>
-              <TableCell>Description</TableCell>
-              <TableCell>Actions</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {rows.map((row) => (
-                <TableRow
-                    key={row.initialDate}
-                    // sx={{'&:last-child td, &:last-child th': {border: 0}}}
-                >
-                  <TableCell component="th" scope="row">
-                    {row.initialDate}
-                  </TableCell>
-                  <TableCell>{row.finishDate}</TableCell>
-                  <TableCell>{row.duration}</TableCell>
-                  <TableCell>{row.description}</TableCell>
-                </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
+      <Box sx={{ width: '100%' }}>
+        <Paper sx={{ width: '100%', mb: 2 }}>
+          <TableContainer>
+            <Table aria-labelledby="tableTitle">
+              <EnhancedTableHead
+                  numSelected={selected.length}
+                  order={"asc"}
+                  orderBy={orderBy}
+                  onSelectAllClick={() => {}}
+                  onRequestSort={() => {}}
+                  rowCount={rows.length}
+              />
+              <TableBody>
+                {rows.map((row, index) => <Row key={row.id} row={row} />)}
+                {emptyRows > 0 && (
+                    <TableRow style={{ height: (53) * emptyRows}}>
+                      <TableCell colSpan={12} />
+                    </TableRow>
+                )}
+              </TableBody>
+            </Table>
+          </TableContainer>
+          <TablePagination
+              rowsPerPageOptions={[5, 10, 25]}
+              component="div"
+              count={rows.length}
+              rowsPerPage={rowsPerPage}
+              page={page}
+              onPageChange={handleChangePage}
+              onRowsPerPageChange={handleChangeRowsPerPage}
+          />
+        </Paper>
+      </Box>
   );
 }
