@@ -102,10 +102,10 @@ export const colorSchemes = {
       },
       neutral: { ...stormGrey },
       primary: {
-        ...neonBlue,
-        light: neonBlue[400],
-        main: neonBlue[500],
-        dark: neonBlue[600],
+        ...california,
+        light: california[400],
+        main: california[500],
+        dark: california[600],
         contrastText: 'var(--mui-palette-common-white)',
       },
       secondary: {
