@@ -1,10 +1,8 @@
 'use client';
 
 import * as React from 'react';
-import Avatar from '@mui/material/Avatar';
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
-import Checkbox from '@mui/material/Checkbox';
 import Divider from '@mui/material/Divider';
 import Stack from '@mui/material/Stack';
 import Table from '@mui/material/Table';
@@ -13,29 +11,21 @@ import TableCell from '@mui/material/TableCell';
 import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
-import Typography from '@mui/material/Typography';
-import dayjs from 'dayjs';
-
-import { useSelection } from '@/hooks/use-selection';
-
+import {useSelection} from '@/hooks/use-selection';
+import {Task} from "@/interfaces/Task";
+import PlayArrowOutlinedIcon from '@mui/icons-material/PlayArrowOutlined';
+import StopOutlinedIcon from '@mui/icons-material/StopOutlined';
+import CreateOutlinedIcon from '@mui/icons-material/CreateOutlined';
+import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
+import dayjs from "@/lib/dayjs";
 function noop(): void {
   // do nothing
 }
 
-export interface Customer {
-  id: string;
-  avatar: string;
-  name: string;
-  email: string;
-  address: { city: string; state: string; country: string; street: string };
-  phone: string;
-  createdAt: Date;
-}
-
-interface CustomersTableProps {
+interface TasksTableProps {
   count?: number;
   page?: number;
-  rows?: Customer[];
+  rows: Task[];
   rowsPerPage?: number;
 }
 
@@ -44,15 +34,12 @@ export function CustomersTable({
   rows = [],
   page = 0,
   rowsPerPage = 0,
-}: CustomersTableProps): React.JSX.Element {
+}: TasksTableProps): React.JSX.Element {
   const rowIds = React.useMemo(() => {
     return rows.map((customer) => customer.id);
   }, [rows]);
 
   const { selectAll, deselectAll, selectOne, deselectOne, selected } = useSelection(rowIds);
-
-  const selectedSome = (selected?.size ?? 0) > 0 && (selected?.size ?? 0) < rows.length;
-  const selectedAll = rows.length > 0 && selected?.size === rows.length;
 
   return (
     <Card>
@@ -61,55 +48,49 @@ export function CustomersTable({
           <TableHead>
             <TableRow>
               <TableCell padding="checkbox">
-                <Checkbox
-                  checked={selectedAll}
-                  indeterminate={selectedSome}
-                  onChange={(event) => {
-                    if (event.target.checked) {
-                      selectAll();
-                    } else {
-                      deselectAll();
-                    }
-                  }}
-                />
+                {/*<Checkbox*/}
+                {/*  checked={selectedAll}*/}
+                {/*  indeterminate={selectedSome}*/}
+                {/*  onChange={(event) => {*/}
+                {/*    if (event.target.checked) {*/}
+                {/*      selectAll();*/}
+                {/*    } else {*/}
+                {/*      deselectAll();*/}
+                {/*    }*/}
+                {/*  }}*/}
+                {/*/>*/}
               </TableCell>
-              <TableCell>Name</TableCell>
-              <TableCell>Email</TableCell>
-              <TableCell>Location</TableCell>
-              <TableCell>Phone</TableCell>
-              <TableCell>Signed Up</TableCell>
+              <TableCell>ID</TableCell>
+              <TableCell>Description</TableCell>
+              <TableCell>Start Time</TableCell>
+              <TableCell>Finish Time</TableCell>
+              <TableCell>Duration</TableCell>
+              <TableCell>Category</TableCell>
+              <TableCell>Status</TableCell>
+              <TableCell>Actions</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows.map((row) => {
-              const isSelected = selected?.has(row.id);
-
+            {rows.map((row: Task) => {
               return (
-                <TableRow hover key={row.id} selected={isSelected}>
+                <TableRow hover key={row.id} selected={false}>
                   <TableCell padding="checkbox">
-                    <Checkbox
-                      checked={isSelected}
-                      onChange={(event) => {
-                        if (event.target.checked) {
-                          selectOne(row.id);
-                        } else {
-                          deselectOne(row.id);
-                        }
-                      }}
-                    />
                   </TableCell>
+                  <TableCell>{row.id}</TableCell>
+                  <TableCell>{row.description}</TableCell>
+                  <TableCell>{row.startTime ? dayjs(row.startTime).format('MM-DD-YYYY HH:mm') : "-"}</TableCell>
+                  <TableCell>{row.finishTime ? dayjs(row.finishTime).format('MM-DD-YYYY HH:mm') : "-"}</TableCell>
+                  <TableCell>{row.startTime ? (row.finishTime ? dayjs.duration(dayjs(row.finishTime).diff(dayjs(row.startTime), "millisecond")).format("DD:HH:mm") : dayjs.duration(dayjs(row.finishTime).diff(dayjs(row.startTime), "millisecond")).format("DD:HH:mm")) : "-"}</TableCell>
+                  <TableCell>{row.category}</TableCell>
+                  <TableCell>{row.status}</TableCell>
                   <TableCell>
-                    <Stack sx={{ alignItems: 'center' }} direction="row" spacing={2}>
-                      <Avatar src={row.avatar} />
-                      <Typography variant="subtitle2">{row.name}</Typography>
+                    <Stack direction="row" spacing={1} sx={{ alignItems: "left" }}>
+                      {(row.status === "Not Started" || row.status === "Finished") && <PlayArrowOutlinedIcon color="success"/>}
+                      <StopOutlinedIcon color="error" />
+                      <CreateOutlinedIcon color="info" />
+                      <DeleteOutlinedIcon color="warning" />
                     </Stack>
                   </TableCell>
-                  <TableCell>{row.email}</TableCell>
-                  <TableCell>
-                    {row.address.city}, {row.address.state}, {row.address.country}
-                  </TableCell>
-                  <TableCell>{row.phone}</TableCell>
-                  <TableCell>{dayjs(row.createdAt).format('MMM D, YYYY')}</TableCell>
                 </TableRow>
               );
             })}
