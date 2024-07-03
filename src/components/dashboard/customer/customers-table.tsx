@@ -19,6 +19,8 @@ import CreateOutlinedIcon from '@mui/icons-material/CreateOutlined';
 import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
 import dayjs from "@/lib/dayjs";
 import {TaskStatus} from "@/interfaces/TaskStatus";
+import {useEffect, useState} from "react";
+import {DurationComponent} from "@/components/dashboard/customer/DurationComponent";
 
 function noop(): void {
   // do nothing
@@ -33,6 +35,7 @@ interface TasksTableProps {
 function isPlayable(row: Task) {
   return row.status === TaskStatus.NOTSTARTED || row.status === TaskStatus.FINISHED
 }
+
 export function CustomersTable({
   count = 0,
   rows = [],
@@ -44,6 +47,12 @@ export function CustomersTable({
   }, [rows]);
 
   const { selectAll, deselectAll, selectOne, deselectOne, selected } = useSelection(rowIds);
+  const [duration, setDuration] = useState(0);
+
+
+  useEffect(() => {
+    duration > 0 && setTimeout(() => setDuration(duration + 1000), 1000);
+  }, [duration]);
 
   return (
     <Card>
@@ -84,7 +93,7 @@ export function CustomersTable({
                   <TableCell>{row.description}</TableCell>
                   <TableCell>{row.startTime ? dayjs(row.startTime).format('MM-DD-YYYY HH:mm') : "-"}</TableCell>
                   <TableCell>{row.finishTime ? dayjs(row.finishTime).format('MM-DD-YYYY HH:mm') : "-"}</TableCell>
-                  <TableCell>{row.startTime ? (row.finishTime ? dayjs.duration(dayjs(row.finishTime).diff(dayjs(row.startTime), "millisecond")).format("DD:HH:mm") : dayjs.duration(dayjs(row.finishTime).diff(dayjs(row.startTime), "millisecond")).format("DD:HH:mm")) : "-"}</TableCell>
+                  <TableCell><DurationComponent task={row}/></TableCell>
                   <TableCell>{row.category}</TableCell>
                   <TableCell>{row.status}</TableCell>
                   <TableCell>
