@@ -1,3 +1,5 @@
+import {TaskStatus} from "@/interfaces/TaskStatus";
+
 export function useTasks() {
   return [
     {
@@ -6,7 +8,7 @@ export function useTasks() {
       startTime: undefined,
       finishTime: undefined,
       category: "Development",
-      status: "Not Started"
+      status: TaskStatus.NOTSTARTED
     },
     {
       id: 2,
@@ -14,7 +16,7 @@ export function useTasks() {
       startTime: "2023-06-11T09:00:00Z",
       finishTime: undefined,
       category: "Design",
-      status: "Started"
+      status: TaskStatus.STARTED
     },
     {
       id: 3,
@@ -22,7 +24,7 @@ export function useTasks() {
       startTime: "2023-06-12T10:00:00Z",
       finishTime: "2023-06-12T14:00:00Z",
       category: "Development",
-      status: "Finished"
+      status: TaskStatus.FINISHED
     }
   ];
 }

@@ -4,12 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1e414a58-d913-47c8-8fa1-f5055a903f60" name="Changes" comment="Removing unecessary code">
+    <list default="true" id="1e414a58-d913-47c8-8fa1-f5055a903f60" name="Changes" comment="Ajustes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/dashboard/customers/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/dashboard/tasks/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/dashboard/tasks/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/dashboard/tasks/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/dashboard/customer/customers-table.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/dashboard/customer/customers-table.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hooks/useTasks.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/useTasks.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/interfaces/Task.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/interfaces/Task.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,7 +91,8 @@
       <workItem from="1719774663860" duration="1125000" />
       <workItem from="1719799207506" duration="5266000" />
       <workItem from="1719878652781" duration="6036000" />
-      <workItem from="1719920351422" duration="323000" />
+      <workItem from="1719920351422" duration="1521000" />
+      <workItem from="1719966344329" duration="803000" />
     </task>
     <task id="LOCAL-00001" summary="Adicioando a tabela">
       <option name="closed" value="true" />
@@ -189,7 +190,15 @@
       <option name="project" value="LOCAL" />
       <updated>1719803974597</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Ajustes">
+      <option name="closed" value="true" />
+      <created>1719920685002</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1719920685002</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -225,12 +234,12 @@
     <MESSAGE value="adding dockerfile" />
     <MESSAGE value="adding dockerignore" />
     <MESSAGE value="add .idea in gitignore" />
-    <MESSAGE value="Ajustes" />
     <MESSAGE value="Removendo ordenacao" />
     <MESSAGE value="Adicionando novo dashboard" />
     <MESSAGE value="adding images" />
     <MESSAGE value="changing primary color to california" />
     <MESSAGE value="Removing unecessary code" />
-    <option name="LAST_COMMIT_MESSAGE" value="Removing unecessary code" />
+    <MESSAGE value="Ajustes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ajustes" />
   </component>
 </project>

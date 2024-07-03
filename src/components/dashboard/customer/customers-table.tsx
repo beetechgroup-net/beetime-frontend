@@ -18,6 +18,8 @@ import StopOutlinedIcon from '@mui/icons-material/StopOutlined';
 import CreateOutlinedIcon from '@mui/icons-material/CreateOutlined';
 import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
 import dayjs from "@/lib/dayjs";
+import {TaskStatus} from "@/interfaces/TaskStatus";
+
 function noop(): void {
   // do nothing
 }
@@ -28,7 +30,9 @@ interface TasksTableProps {
   rows: Task[];
   rowsPerPage?: number;
 }
-
+function isPlayable(row: Task) {
+  return row.status === TaskStatus.NOTSTARTED || row.status === TaskStatus.FINISHED
+}
 export function CustomersTable({
   count = 0,
   rows = [],
@@ -85,8 +89,8 @@ export function CustomersTable({
                   <TableCell>{row.status}</TableCell>
                   <TableCell>
                     <Stack direction="row" spacing={1} sx={{ alignItems: "left" }}>
-                      {(row.status === "Not Started" || row.status === "Finished") && <PlayArrowOutlinedIcon color="success"/>}
-                      <StopOutlinedIcon color="error" />
+                      { isPlayable(row) && <PlayArrowOutlinedIcon color="success"/>}
+                      {!isPlayable(row) && <StopOutlinedIcon color="error"/>}
                       <CreateOutlinedIcon color="info" />
                       <DeleteOutlinedIcon color="warning" />
                     </Stack>
