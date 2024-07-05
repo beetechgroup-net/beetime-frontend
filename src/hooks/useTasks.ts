@@ -1,6 +1,7 @@
 import {TaskStatus} from "@/interfaces/TaskStatus";
+import {Task} from "@/interfaces/Task";
 
-export function useTasks() {
+export function useTasks(): Task[] {
   return [
     {
       id: 1,
@@ -8,7 +9,7 @@ export function useTasks() {
       startTime: undefined,
       finishTime: undefined,
       category: "Development",
-      status: TaskStatus.NOTSTARTED
+      status: TaskStatus.NOTSTARTED,
     },
     {
       id: 2,

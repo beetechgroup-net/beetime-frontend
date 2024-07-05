@@ -4,10 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1e414a58-d913-47c8-8fa1-f5055a903f60" name="Changes" comment="Adicionando Duration Cronometer">
+    <list default="true" id="1e414a58-d913-47c8-8fa1-f5055a903f60" name="Changes" comment="Adicionando Zustand">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hooks/useTasks.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/useTasks.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/interfaces/Task.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/interfaces/Task.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/dayjs.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/dayjs.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,6 +95,7 @@
       <workItem from="1720009059363" duration="99000" />
       <workItem from="1720009346024" duration="130000" />
       <workItem from="1720013624813" duration="68000" />
+      <workItem from="1720198302763" duration="439000" />
     </task>
     <task id="LOCAL-00001" summary="Adicioando a tabela">
       <option name="closed" value="true" />
@@ -215,36 +217,19 @@
       <option name="project" value="LOCAL" />
       <updated>1719970046168</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Adicionando Zustand">
+      <option name="closed" value="true" />
+      <created>1720198332170</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1720198332170</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-    <option name="exactExcludedFiles">
-      <list>
-        <option value="$PROJECT_DIR$/src/app/dashboard/internals/data/gridData.js" />
-        <option value="$PROJECT_DIR$/src/app/dashboard/internals/components/Copyright.js" />
-        <option value="$PROJECT_DIR$/src/app/dashboard/internals/components/CustomIcons.js" />
-        <option value="$PROJECT_DIR$/src/app/dashboard/internals/components/ToggleCustomTheme.js" />
-        <option value="$PROJECT_DIR$/src/app/dashboard/components/Header.js" />
-        <option value="$PROJECT_DIR$/src/app/dashboard/components/Navbar.js" />
-        <option value="$PROJECT_DIR$/src/app/dashboard/components/Search.js" />
-        <option value="$PROJECT_DIR$/src/app/dashboard/components/SideNav.js" />
-        <option value="$PROJECT_DIR$/src/app/dashboard/components/MainGrid.js" />
-        <option value="$PROJECT_DIR$/src/app/dashboard/components/StatCard.js" />
-        <option value="$PROJECT_DIR$/src/app/dashboard/components/MenuButton.js" />
-        <option value="$PROJECT_DIR$/src/app/dashboard/components/OptionsMenu.js" />
-        <option value="$PROJECT_DIR$/src/app/dashboard/components/PageViewsChart.js" />
-        <option value="$PROJECT_DIR$/src/app/dashboard/components/HighlightedCard.js" />
-        <option value="$PROJECT_DIR$/src/app/dashboard/components/ToggleColorMode.js" />
-        <option value="$PROJECT_DIR$/src/app/dashboard/components/CustomDatePicker.js" />
-        <option value="$PROJECT_DIR$/src/app/dashboard/components/NavbarBreadcrumbs.js" />
-        <option value="$PROJECT_DIR$/src/app/dashboard/components/PageViewsBarChart.js" />
-        <option value="$PROJECT_DIR$/src/app/dashboard/components/ChartUserByCountry.js" />
-        <option value="$PROJECT_DIR$/src/app/dashboard/components/CustomizedDataGrid.js" />
-        <option value="$PROJECT_DIR$/src/app/dashboard/components/CustomizedTreeView.js" />
-      </list>
-    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Adicioando a tabela" />
@@ -259,6 +244,7 @@
     <MESSAGE value="Ajustes" />
     <MESSAGE value="Showing play and stop by status" />
     <MESSAGE value="Adicionando Duration Cronometer" />
-    <option name="LAST_COMMIT_MESSAGE" value="Adicionando Duration Cronometer" />
+    <MESSAGE value="Adicionando Zustand" />
+    <option name="LAST_COMMIT_MESSAGE" value="Adicionando Zustand" />
   </component>
 </project>
