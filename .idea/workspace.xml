@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1e414a58-d913-47c8-8fa1-f5055a903f60" name="Changes" comment="Showing play and stop by status">
+    <list default="true" id="1e414a58-d913-47c8-8fa1-f5055a903f60" name="Changes" comment="Adicionando Duration Cronometer">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/dashboard/customer/customers-table.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/dashboard/customer/customers-table.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,7 +90,10 @@
       <workItem from="1719799207506" duration="5266000" />
       <workItem from="1719878652781" duration="6036000" />
       <workItem from="1719920351422" duration="1521000" />
-      <workItem from="1719966344329" duration="3662000" />
+      <workItem from="1719966344329" duration="5305000" />
+      <workItem from="1720009059363" duration="99000" />
+      <workItem from="1720009346024" duration="130000" />
+      <workItem from="1720013624813" duration="68000" />
     </task>
     <task id="LOCAL-00001" summary="Adicioando a tabela">
       <option name="closed" value="true" />
@@ -203,7 +207,15 @@
       <option name="project" value="LOCAL" />
       <updated>1719967199898</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Adicionando Duration Cronometer">
+      <option name="closed" value="true" />
+      <created>1719970046168</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1719970046168</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -246,6 +258,7 @@
     <MESSAGE value="Removing unecessary code" />
     <MESSAGE value="Ajustes" />
     <MESSAGE value="Showing play and stop by status" />
-    <option name="LAST_COMMIT_MESSAGE" value="Showing play and stop by status" />
+    <MESSAGE value="Adicionando Duration Cronometer" />
+    <option name="LAST_COMMIT_MESSAGE" value="Adicionando Duration Cronometer" />
   </component>
 </project>
