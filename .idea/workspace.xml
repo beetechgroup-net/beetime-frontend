@@ -4,11 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1e414a58-d913-47c8-8fa1-f5055a903f60" name="Changes" comment="Adicionando Zustand">
+    <list default="true" id="1e414a58-d913-47c8-8fa1-f5055a903f60" name="Changes" comment="Refatorando para dar build">
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hooks/useTasks.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/useTasks.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interfaces/Task.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/interfaces/Task.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/dayjs.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/dayjs.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/next.config.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/next.config.mjs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,7 +95,8 @@
       <workItem from="1720009059363" duration="99000" />
       <workItem from="1720009346024" duration="130000" />
       <workItem from="1720013624813" duration="68000" />
-      <workItem from="1720198302763" duration="439000" />
+      <workItem from="1720198302763" duration="1271000" />
+      <workItem from="1720226492104" duration="1545000" />
     </task>
     <task id="LOCAL-00001" summary="Adicioando a tabela">
       <option name="closed" value="true" />
@@ -225,7 +226,15 @@
       <option name="project" value="LOCAL" />
       <updated>1720198332170</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Refatorando para dar build">
+      <option name="closed" value="true" />
+      <created>1720198864398</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1720198864398</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -245,6 +254,7 @@
     <MESSAGE value="Showing play and stop by status" />
     <MESSAGE value="Adicionando Duration Cronometer" />
     <MESSAGE value="Adicionando Zustand" />
-    <option name="LAST_COMMIT_MESSAGE" value="Adicionando Zustand" />
+    <MESSAGE value="Refatorando para dar build" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refatorando para dar build" />
   </component>
 </project>
