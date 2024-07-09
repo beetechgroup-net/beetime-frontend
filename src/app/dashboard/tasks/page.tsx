@@ -1,3 +1,4 @@
+"use client";
 import * as React from 'react';
 import type { Metadata } from 'next';
 import Button from '@mui/material/Button';
@@ -10,18 +11,20 @@ import { Upload as UploadIcon } from '@phosphor-icons/react/dist/ssr/Upload';
 import { config } from '@/config';
 import { CustomersFilters } from '@/components/dashboard/customer/customers-filters';
 import { CustomersTable } from '@/components/dashboard/customer/customers-table';
-import {useTasks} from "@/hooks/useTasks";
 import {Task} from "@/interfaces/Task";
+import {useTasksStore} from "@/store/useTasks";
+import {TaskStatus} from "@/interfaces/TaskStatus";
+import dayjs from "dayjs";
 
-export const metadata = { title: `Customers | Dashboard | ${config.site.name}` } satisfies Metadata;
+// export const metadata = { title: `Customers | Dashboard | ${config.site.name}` } satisfies Metadata;
 
 export default function Page(): React.JSX.Element {
-  const tasks = useTasks();
+  const {getTasks, addTask} = useTasksStore();
 
   const page = 0;
   const rowsPerPage = 5;
 
-  const paginatedCustomers = applyPagination(tasks, page, rowsPerPage);
+  const paginatedCustomers = applyPagination(getTasks(), page, rowsPerPage);
 
   return (
     <Stack spacing={3}>
@@ -38,14 +41,24 @@ export default function Page(): React.JSX.Element {
           </Stack>
         </Stack>
         <div>
-          <Button startIcon={<PlusIcon fontSize="var(--icon-fontSize-md)" />} variant="contained">
+          <Button
+              startIcon={<PlusIcon fontSize="var(--icon-fontSize-md)" />}
+              variant="contained"
+              onClick={() => addTask({
+                id: dayjs().unix(),
+                description: `Task ${dayjs().unix()} - Implement user authentication.`,
+                startTime: dayjs().format("YYYY-MM-DD HH:mm:ss"),
+                category: "Development",
+                status: TaskStatus.STARTED
+              })}
+          >
             Add
           </Button>
         </div>
       </Stack>
       <CustomersFilters />
       <CustomersTable
-        count={paginatedCustomers.length}
+        count={paginatedCustomers.size}
         page={page}
         rows={paginatedCustomers}
         rowsPerPage={rowsPerPage}
@@ -54,6 +67,7 @@ export default function Page(): React.JSX.Element {
   );
 }
 
-function applyPagination(rows: Task[], page: number, rowsPerPage: number): Task[] {
-  return rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage);
+function applyPagination(rows: Map<number, Task>, page: number, rowsPerPage: number): Task[] {
+  //TODO - Fazer a paginação
+  return rows;
 }
