@@ -1,10 +1,10 @@
 import {TaskStatus} from "@/interfaces/TaskStatus";
+import {TaskItem} from "@/interfaces/TaskItem";
 
 export interface Task {
   id: number;
   description: string;
-  startTime?: string;
-  finishTime?: string;
   category: string;
   status: TaskStatus;
+  taskItems?: TaskItem[]
 }

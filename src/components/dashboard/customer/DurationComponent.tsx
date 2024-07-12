@@ -1,21 +1,26 @@
 import {Task} from "@/interfaces/Task";
 import dayjs from "@/lib/dayjs";
 import {useEffect, useState} from "react";
+import {TaskStatus} from "@/interfaces/TaskStatus";
 
 interface DurationComponentProps {
   task: Task;
 }
 
 function calculateDuration(row: Task) {
-  if (row.startTime){
-    if (row.finishTime){
-      return dayjs.duration(dayjs(row.finishTime).diff(dayjs(row.startTime), "millisecond")).format("DD:HH:mm:ss")
-    } else {
-      return dayjs.duration(dayjs(row.finishTime).diff(dayjs(row.startTime), "millisecond")).format("DD:HH:mm:ss")
+  let duration = 0
+
+  row.taskItems?.forEach((item) => {
+    if (item.startTime && item.finishTime) {
+      duration = duration + dayjs.duration(dayjs(item.finishTime).diff(dayjs(item.startTime), "millisecond"))
     }
-  } else {
-    return "-"
-  }
+
+    else if (item.startTime && !item.finishTime) {
+      duration = duration + dayjs.duration(dayjs().diff(dayjs(item.startTime), "millisecond"))
+    }
+  })
+
+  return dayjs.duration(duration).format("DD:HH:mm:ss")
 }
 
 export function DurationComponent({task}: DurationComponentProps) {
@@ -23,11 +28,12 @@ export function DurationComponent({task}: DurationComponentProps) {
 
   // Third Attempts
   useEffect(() => {
-    if (task.startTime && !task.finishTime) {
+    if (TaskStatus.FINISHED !== task.status) {
       const timer = setInterval(() => setDuration(calculateDuration(task)), 1000);
       return () => clearInterval(timer);
     }
   }, [duration]);
+
   return (
       <>
         {duration}

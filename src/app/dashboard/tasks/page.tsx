@@ -47,7 +47,6 @@ export default function Page(): React.JSX.Element {
               onClick={() => addTask({
                 id: dayjs().unix(),
                 description: `Task ${dayjs().unix()} - Implement user authentication.`,
-                startTime: dayjs().format("YYYY-MM-DD HH:mm:ss"),
                 category: "Development",
                 status: TaskStatus.STARTED
               })}

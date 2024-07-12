@@ -1,6 +1,7 @@
 'use client';
 
 import * as React from 'react';
+import {useEffect, useState} from 'react';
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import Divider from '@mui/material/Divider';
@@ -17,12 +18,10 @@ import PlayArrowOutlinedIcon from '@mui/icons-material/PlayArrowOutlined';
 import StopOutlinedIcon from '@mui/icons-material/StopOutlined';
 import CreateOutlinedIcon from '@mui/icons-material/CreateOutlined';
 import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
-import dayjs from "@/lib/dayjs";
 import {TaskStatus} from "@/interfaces/TaskStatus";
-import {useEffect, useState} from "react";
 import {DurationComponent} from "@/components/dashboard/customer/DurationComponent";
-import { IconButton } from '@mui/material';
-import {useTasks, useTasksStore} from "@/store/useTasks";
+import {IconButton} from '@mui/material';
+import {useTasksStore} from "@/store/useTasks";
 
 function noop(): void {
   // do nothing
@@ -50,12 +49,7 @@ export function CustomersTable({
 
   const { selectAll, deselectAll, selectOne, deselectOne, selected } = useSelection(rowIds);
   const [duration, setDuration] = useState(0);
-  const { removeTask } = useTasksStore();
-
-  function handleDelete(id: number) {
-    console.log("Deleting task with id: " + id);
-    removeTask(id);
-  }
+  const { finishTask, removeTask } = useTasksStore();
 
   useEffect(() => {
     duration > 0 && setTimeout(() => setDuration(duration + 1000), 1000);
@@ -70,8 +64,8 @@ export function CustomersTable({
               <TableCell padding="checkbox"></TableCell>
               <TableCell>ID</TableCell>
               <TableCell>Description</TableCell>
-              <TableCell>Start Time</TableCell>
-              <TableCell>Finish Time</TableCell>
+              {/*<TableCell>Start Time</TableCell>*/}
+              {/*<TableCell>Finish Time</TableCell>*/}
               <TableCell>Duration</TableCell>
               <TableCell>Category</TableCell>
               <TableCell>Status</TableCell>
@@ -86,22 +80,22 @@ export function CustomersTable({
                   </TableCell>
                   <TableCell>{row.id}</TableCell>
                   <TableCell>{row.description}</TableCell>
-                  <TableCell>{row.startTime ? dayjs(row.startTime).format('MM-DD-YYYY HH:mm') : "-"}</TableCell>
-                  <TableCell>{row.finishTime ? dayjs(row.finishTime).format('MM-DD-YYYY HH:mm') : "-"}</TableCell>
+                  {/*<TableCell>{row.startTime ? dayjs(row.startTime).format('MM-DD-YYYY HH:mm') : "-"}</TableCell>*/}
+                  {/*<TableCell>{row.finishTime ? dayjs(row.finishTime).format('MM-DD-YYYY HH:mm') : "-"}</TableCell>*/}
                   <TableCell><DurationComponent task={row}/></TableCell>
                   <TableCell>{row.category}</TableCell>
                   <TableCell>{row.status}</TableCell>
                   <TableCell>
                     <Stack direction="row" spacing={1} sx={{ alignItems: "left" }}>
                       { isPlayable(row) && <IconButton><PlayArrowOutlinedIcon color="success"/></IconButton>}
-                      {!isPlayable(row) && <IconButton><StopOutlinedIcon color="error" onClick={() => handleDelete(row.id)}/></IconButton>}
+                      {!isPlayable(row) && <IconButton><StopOutlinedIcon color="error" onClick={() => finishTask(row.id)}/></IconButton>}
 
                       <IconButton>
-                        <CreateOutlinedIcon color="info" onClick={() => handleDelete(row.id)}/>
+                        <CreateOutlinedIcon color="info" onClick={() => removeTask(row.id)}/>
                       </IconButton>
 
                       <IconButton>
-                        <DeleteOutlinedIcon color="warning" onClick={() => handleDelete(row.id)}/>
+                        <DeleteOutlinedIcon color="warning" onClick={() => removeTask(row.id)}/>
                       </IconButton>
                     </Stack>
                   </TableCell>
